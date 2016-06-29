@@ -1,0 +1,11 @@
+{
+  "name": "online_coffee_mips",
+  "version": "1.0.0",
+  "description": "online coffee mips ",
+  "main": "index.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "team ma",
+  "license": "ISC"
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+
+</head>
+<body ng-app="myApp" ng-controller="appctrl" ng-cloak>
+
+    <div class="container" ng-show="activated">
+      <md-progress-linear md-mode="query" ></md-progress-linear>
+        <div class="loading">
+          <h3>Loading Application</h4>
+          <h5>Please wait...</h5>
+        </div>
+    </div>
+
+
+  <md-toolbar class="md-hue-2" ng-show="!activated">
+    <div class="md-toolbar-tools">
+
+      <span>Shiraz University</span>
+
+      <span flex></span>
+
+      <span>Online Coffee Mips (OCM)</span>
+
+      <span flex> </span>
+
+      <md-button class="md-raised md-primary" aria-label="Settings">
+        Uplaod Files
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <div layout-gt-sm="row" ng-show="!activated">
+
+    <div flex-gt-sm="100" flex class="middle">
+      <md-content>
+        <md-tabs class="md-primary md-hue-1" md-dynamic-height md-border-bottom>
+          <md-tab label="Code">
+            <md-content class="md-padding">
+              <md-input-container style="width:95%">
+                <label>Write/Past Your Code Here</label>
+                <textarea name="code" ng-change="Runbtn()" ng-model="code" md-rows="40" ></textarea>
+              </md-input-container>
+
+              <br>
+              <md-button class="md-raised md-primary" ng-click="sendCode()" ng-disabled="hadcode">Run Code</md-button>
+
+            </md-content>
+
+          </md-tab>
+          <md-tab label="Assembled">
+            <md-content class="md-padding">
+              <h3 ng-show="showHeads">All Assembled Instructions Will Be Shown Here</h3>
+              <table class="table-fill" ng-show="!showHeads">
+                <thead>
+                  <th class="text-left">
+                    address
+                  </th>
+                  <th class="text-left">
+                    content
+                  </th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="ins in assembled">
+                    <td class="text-left">
+                      {{ins.address}}
+                    </td>
+                    <td class="text-left">
+                      {{ins.instruction}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </md-content>
+          </md-tab>
+          <md-tab label="Registers">
+            <md-content  class="md-padding">
+              <h3 ng-show="showHeads">Registers State Will Be shown Here</h3>
+            </md-content>
+
+          </md-tab>
+          <md-tab label="Memory">
+            <md-content  class="md-padding">
+              <h3 ng-show="showHeads">Memory Will Be Shown Here</h3>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-content>
+    </div>
+
+
+  </div>
+    <!--
+  <div class="body-content" ng-show="!activated">
+    <div class="left">
+
+    </div>
+    <div class="middle">
+
+    </div>
+    <div class="right">
+
+    </div>
+  </div> -->
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+  <script src="./node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+  <script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+
+
+  <!-- Your application bootstrap  -->
+  <script src="index.module.js" charset="utf-8"></script>
+
+  <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+
+
+</body>
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->
