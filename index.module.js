@@ -53,13 +53,15 @@ var app=angular.module('myApp', ['ngMaterial','ngFileUpload']);
     $scope.sendCode=function() {
       console.log("toast");
       $scope.showSimpleToast();
+      console.log($scope.code);
       $http({
             method : "POST",
-            url : "welcome.htm"
+            url : "http://127.0.0.1:9000/execute/getcode",
+            data    : $scope.code
         }).then(function mySucces(response) {
-            $scope.myWelcome = response.data;
+            console.log(response);
         }, function myError(response) {
-            $scope.myWelcome = response.statusText;
+            console.log(response);
         });
     }
 
