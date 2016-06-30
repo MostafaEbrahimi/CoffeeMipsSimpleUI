@@ -174,10 +174,10 @@ var app=angular.module('myApp', ['ngMaterial','ngFileUpload']);
             $scope.showHeads=false;
             $scope.Runbtn();
             console.log($scope.registers);
-            $scope.showSimpleToast("Memory Was Get From Server")
+            $scope.showSimpleToast("Registers Was Get From Server")
         },function(err) {
             console.log(err);
-            $scope.showSimpleToast("Cannot Get Memory From Server");
+            $scope.showSimpleToast("Cannot Get Registers From Server");
         });
       }
     }
