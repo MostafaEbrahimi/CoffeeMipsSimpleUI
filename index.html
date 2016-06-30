@@ -29,8 +29,8 @@
 
       <span flex> </span>
 
-      <md-button class="md-raised md-primary" aria-label="Settings">
-        Uplaod Files
+      <md-button class="md-raised md-primary" ng-click="showConfirm()" aria-label="Settings">
+        Reset
       </md-button>
     </div>
   </md-toolbar>
@@ -44,19 +44,20 @@
             <md-content class="md-padding">
               <md-input-container style="width:95%">
                 <label>Write/Past Your Code Here</label>
-                <textarea name="code" ng-change="Runbtn()" ng-model="code" md-rows="40" ></textarea>
+                <textarea  style="font-family:'Courier New', Courier, monospace;font-size:12px;" spellcheck="false" name="code" ng-change="Runbtn()" ng-model="code" md-rows="40" ></textarea>
               </md-input-container>
 
               <br>
-              <md-button class="md-raised md-primary" ng-click="sendCode()" ng-disabled="hadcode">Run Code</md-button>
+              <md-button class="md-raised md-primary" ng-click="sendCode()" ng-disabled="hadcode">Assemble</md-button>
+              <md-button class="md-raised md-primary" ng-click="sendRun()" ng-disabled="codeSent">Run</md-button>
 
             </md-content>
 
           </md-tab>
           <md-tab label="Assembled">
             <md-content class="md-padding">
-              <h3 ng-show="showHeads">All Assembled Instructions Will Be Shown Here</h3>
-              <table class="table-fill" ng-show="!showHeads">
+              <h3 ng-show="showassembled">Not Been Assembled Any Program</h3>
+              <table class="table-fill" ng-show="!showassembled">
                 <thead>
                   <th class="text-left">
                     address
@@ -78,17 +79,63 @@
               </table>
             </md-content>
           </md-tab>
-          <md-tab label="Registers">
+          <md-tab label="Registers" ng-click="getRegisters()" >
             <md-content  class="md-padding">
-              <h3 ng-show="showHeads">Registers State Will Be shown Here</h3>
+              <h3 ng-show="showHeads">Not Been Run Any Program</h3>
+              <table class="table-fill" ng-show="!showHeads">
+                <thead>
+                  <th class="text-left">
+                    Register Number
+                  </th>
+                  <th class="text-left">
+                    Content Of Register
+                  </th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="reg in registers">
+                    <td class="text-left">
+                      ${{reg.register_number}}
+                    </td>
+                    <td class="text-left">
+                      {{reg.register_value}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </md-content>
 
           </md-tab>
-          <md-tab label="Memory">
+          <md-tab label="Memory" ng-click="getMemory()">
             <md-content  class="md-padding">
-              <h3 ng-show="showHeads">Memory Will Be Shown Here</h3>
+              <h3 ng-show="showHeads">Not Been Run Any Program</h3>
+              <table class="table-fill" ng-show="!showHeads">
+                <thead>
+                  <th class="text-left">
+                    Memory Address
+                  </th>
+                  <th class="text-left">
+                    Content Of Memory
+                  </th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="mem in contentMem">
+                    <td class="text-left">
+                      ${{mem.address}}
+                    </td>
+                    <td class="text-left">
+                      {{mem.content}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </md-content>
           </md-tab>
+          <md-tab label="Debug">
+            <md-content class="md-padding">
+              <h2>Comming Soon! :)</h2>
+            </md-content>
+          </md-tab>
+
         </md-tabs>
       </md-content>
     </div>
