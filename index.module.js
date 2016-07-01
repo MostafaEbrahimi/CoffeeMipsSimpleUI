@@ -89,14 +89,25 @@ var app=angular.module('myApp', ['ngMaterial','ngFileUpload']);
     }
 
     $scope.sendRun=function() {
-      $http({
-        method:"GET",
-        url:"http://127.0.0.1:9000/execute/run"
-      }).then(function(res) {
-          console.log(res.data);
-      },function(err) {
-          console.log(err);
-      });
+
+      if($scope.assembled.length<0){
+            $scope.showSimpleToast('No code for run');
+      }
+      else {
+        console.log("run");
+        $scope.showSimpleToast('Running assembled code');
+        $http({
+          method:"GET",
+          url:"http://127.0.0.1:9000/execute/run"
+        }).then(function(res) {
+            $scope.showSimpleToast('Code was run');
+            console.log(res.data);
+        },function(err) {
+            $scope.showSimpleToast('Error on running code');
+            console.log(err);
+        });
+      }
+
     }
 
     $scope.filterMem=function() {

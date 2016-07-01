@@ -87,6 +87,9 @@
                   <th class="text-left">
                     Register Number
                   </th>
+                  <th>
+                    Register Name
+                  </th>
                   <th class="text-left">
                     Content Of Register
                   </th>
@@ -94,7 +97,10 @@
                 <tbody>
                   <tr ng-repeat="reg in registers">
                     <td class="text-left">
-                      ${{reg.register_number}}
+                      {{reg.register_number}}
+                    </td>
+                    <td>
+                      {{reg.register_name}}
                     </td>
                     <td class="text-left">
                       {{reg.register_value}}
@@ -103,7 +109,6 @@
                 </tbody>
               </table>
             </md-content>
-
           </md-tab>
           <md-tab label="Memory" ng-click="getMemory()">
             <md-content  class="md-padding">
@@ -142,18 +147,7 @@
 
 
   </div>
-    <!--
-  <div class="body-content" ng-show="!activated">
-    <div class="left">
 
-    </div>
-    <div class="middle">
-
-    </div>
-    <div class="right">
-
-    </div>
-  </div> -->
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
